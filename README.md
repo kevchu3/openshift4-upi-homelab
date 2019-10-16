@@ -24,7 +24,7 @@ Installation
   * Installing the OpenShift Command-line Interface
   * Manually creating the installation configuration file
   * Creating the Ignition config files
-    * I've provided a helper script that can be run: `create-ignition-configs.sh`
+    * I've provided a helper script that can be run: `./create-ignition-configs.sh`
     * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/`
     * Run `/usr/local/bin/helpernodecheck install-info` for more info.
 
@@ -37,8 +37,6 @@ https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos
    ```
    ansible-playbook -e @vars.yaml tasks/main.yml
    ```
-
-4. From 
 
 4. I started all of the VMs to install CoreOS.  On the Install CoreOS screen, I pressed Tab and added the following to specify the corresponding Ignition and BIOS files:
    ```
@@ -61,6 +59,8 @@ https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos
    ```
    ./openshift-install --dir=<installation_directory> wait-for bootstrap-complete --log-level info
    ```
+
+6. To verify installation, I ran this helper script: `./complete-install.sh`
 
 License
 -------
