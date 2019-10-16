@@ -16,13 +16,17 @@ Installation
 
 1. I followed instructions from this [Git repository](https://github.com/christianh814/ocp4-upi-helpernode) to build out a UPI helper node.  This allowed me to satisfy load balancing, DHCP, PXE, DNS, and HTTPD requirements.  I ran `nmcli device show` from the helper node to populate the DHCP section of vars.yaml since the helper node will function as DNS/DHCP for the cluster.  At this time, don't run the helper node configuration playbook yet.
 
+* NOTE: I updated references from the Git repository to use OpenShift 4.2 instead of 4.1.
+
 2. I continued the bare metal installation [here](https://docs.openshift.com/container-platform/4.2/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal).  I followed these steps in the documentation:
   * Generating an SSH private key and adding it to the agent
   * Obtaining the installation program
   * Installing the OpenShift Command-line Interface
   * Manually creating the installation configuration file
   * Creating the Ignition config files
-    * Note: The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node.  Run `/usr/local/bin/helpernodecheck install-info` for more info.
+    * I've provided a helper script that can be run: `create-ignition-configs.sh`
+    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/`
+    * Run `/usr/local/bin/helpernodecheck install-info` for more info.
 
 3. For this step, Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using an ISO image, I proceeded as follows.
   a. In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
@@ -34,16 +38,22 @@ https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos
    ansible-playbook -e @vars.yaml tasks/main.yml
    ```
 
-4. I started all of the VMs to install CoreOS.  When prompted, I installed CoreOS and specified the location of this BIOS:
-http://<my-helper-node>:8080/install/bios.raw.gz
+4. From 
 
-   This is a local clone of the upstream mirror:
+4. I started all of the VMs to install CoreOS.  On the Install CoreOS screen, I pressed Tab and added the following to specify the corresponding Ignition and BIOS files:
+   ```
+   For bootstrap node:
+   coreos.inst.install_dev=sda coreos.inst.ignition_url=http://my-helper-node:8080/ignition/bootstrap.ign coreos.inst.image_url=http://my-helper-node:8080/install/bios.raw.gz
+
+   For master node:
+   coreos.inst.install_dev=sda coreos.inst.ignition_url=http://my-helper-node:8080/ignition/master.ign coreos.inst.image_url=http://my-helper-node:8080/install/bios.raw.gz
+
+   For worker node:
+   coreos.inst.install_dev=sda coreos.inst.ignition_url=http://my-helper-node:8080/ignition/worker.ign coreos.inst.image_url=http://my-helper-node:8080/install/bios.raw.gz
+   ```
+
+   The BIOS file was created by the helper node playbook and is a local clone of the upstream mirror:
    https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos-4.2.0-x86_64-metal-bios.raw.gz
-
-   When prompted, I installed the corresponding Ignition file:
-  * http://<my-helper-node>:8080/ignition/bootstrap.ign
-  * http://<my-helper-node>:8080/ignition/master.ign
-  * http://<my-helper-node>:8080/ignition/worker.ign
 
    The CoreOS wrote to disk and requested a reboot, and I reconfigured RHEV to now boot from hard drive.  Upon reboot of each node, they consumed their respective Ignition files.
 
