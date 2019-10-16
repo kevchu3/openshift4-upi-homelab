@@ -16,11 +16,6 @@ Installation
 
 1. I followed instructions from this [Git repository](https://github.com/christianh814/ocp4-upi-helpernode) to build out a UPI helper node.  This allowed me to satisfy load balancing, DHCP, PXE, DNS, and HTTPD requirements.  I ran `nmcli device show` from the helper node to populate the DHCP section of vars.yaml since the helper node will function as DNS/DHCP for the cluster.  At this time, don't run the helper node configuration playbook yet.
 
-   I ran the configuration playbook with the following command:
-   ```
-   ansible-playbook -e @vars.yaml tasks/main.yml
-   ```
-
 2. I continued the bare metal installation [here](https://docs.openshift.com/container-platform/4.2/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal).  I followed these steps in the documentation:
   * Generating an SSH private key and adding it to the agent
   * Obtaining the installation program
