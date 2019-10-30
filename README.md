@@ -25,7 +25,7 @@ Installation
   * Manually creating the installation configuration file
   * Creating the Ignition config files
     * I've provided a helper script that can be run: `./create-ignition-configs.sh`
-    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/`
+    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/; restorecon -vR /var/www/html/`
     * Run `/usr/local/bin/helpernodecheck install-info` for more info.
 
 3. For this step, Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using an ISO image, I proceeded as follows.
