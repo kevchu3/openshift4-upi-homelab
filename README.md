@@ -29,11 +29,11 @@ Installation
     * Run `/usr/local/bin/helpernodecheck install-info` for more info.
 
 3. For this step, Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using an ISO image, I proceeded as follows.
-  a. In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
-  b. While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
+  * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
+  * While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
 https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos-4.2.0-x86_64-installer.iso
-  c. I noted the MAC addresses of the network interfaces by populating the macaddr field of the bootstrap, masters, and workers sections of vars.yaml.
-  d. At this point, I have the information needed to configure DHCP so I ran the helper node configuration playbook with the following command:
+  * I noted the MAC addresses of the network interfaces by populating the macaddr field of the bootstrap, masters, and workers sections of vars.yaml.
+  * At this point, I have the information needed to configure DHCP so I ran the helper node configuration playbook with the following command:
    ```
    ansible-playbook -e @vars.yaml tasks/main.yml
    ```
