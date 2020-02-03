@@ -19,5 +19,6 @@ networking:
   - 172.30.0.0/16
 platform:
   none: {}
+fips: false
 pullSecret: '{"auths": ...}'
 sshKey: 'ssh-ed25519 AAAA...'
