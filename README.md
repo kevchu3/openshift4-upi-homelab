@@ -21,10 +21,6 @@ Installation
   * Obtaining the installation program
   * Installing the OpenShift Command-line Interface
   * Manually creating the installation configuration file
-  * Creating the Ignition config files
-    * I've provided a helper script that can be run: `./create-ignition-configs.sh`
-    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/; restorecon -vR /var/www/html/`
-    * Run `/usr/local/bin/helpernodecheck install-info` for more info.
 
 3. For this step, Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using an ISO image, I proceeded as follows.
   * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
@@ -38,7 +34,14 @@ Installation
    ansible-playbook -e @vars.yaml tasks/main.yml
    ```
 
-4. I started all of the VMs to install CoreOS.  On the Install CoreOS screen, I pressed Tab and added the following to specify the corresponding Ignition and BIOS files:
+4. Create the manifests and ignition config files
+
+  * Run the helper script to create the manifests file: `create-manifests-config.sh`
+  * Run the helper script to create the ignition config file: `./create-ignition-configs.sh`
+    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/; restorecon -vR /var/www/html/`
+    * Run `/usr/local/bin/helpernodecheck install-info` for more info.
+
+5. I started all of the VMs to install CoreOS.  On the Install CoreOS screen, I pressed Tab and added the following to specify the corresponding Ignition and BIOS files:
    ```
    For bootstrap node:
    coreos.inst.install_dev=sda coreos.inst.image_url=http://my-helper-node:8080/install/bios.raw.gz coreos.inst.ignition_url=http://my-helper-node:8080/ignition/bootstrap.ign
@@ -57,12 +60,12 @@ Installation
 
    The CoreOS wrote to disk and requested a reboot, and I reconfigured RHEV to now boot from hard drive.  Upon reboot of each node, they consumed their respective Ignition files.
 
-5. I kicked off the installation with the following command:
+6. I kicked off the installation with the following command:
    ```
    ./openshift-install --dir=<installation_directory> wait-for bootstrap-complete --log-level info
    ```
 
-6. To verify installation, I ran this helper script: `./complete-install.sh`
+7. To verify installation, I ran this helper script: `./complete-install.sh`
 
 License
 -------
