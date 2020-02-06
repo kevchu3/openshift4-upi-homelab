@@ -33,6 +33,11 @@ Installation
    ```
    ansible-playbook -e @vars.yaml tasks/main.yml
    ```
+  * Add the api and api-int URLs to `/etc/hosts` on your helper node:
+   ```
+   <your-helper-node-ip> api.<your-clusterid>.<your-cluster-domain>
+   <your-helper-node-ip> api-int.<your-clusterid>.<your-cluster-domain>
+   ```
 
 4. Create the manifests and ignition config files
 
@@ -66,6 +71,15 @@ Installation
    ```
 
 7. To verify installation, I ran this helper script: `./complete-install.sh`
+
+Optional
+--------
+
+To view the console and oauth URLs from your laptop outside of the cluster, add the following entries to your laptop's `/etc/hosts`:
+```
+<your-laptop-ip> console-openshift-console.apps.<your-cluster-domain>
+<your-laptop-ip> oauth-openshift.apps.<your-cluster-domain>
+```
 
 License
 -------
