@@ -1,0 +1,8 @@
+auth/
+.openshift_install.log
+.openshift_install_state.json
+bootstrap.ign
+master.ign
+metadata.json
+openshift-install
+worker.ign
