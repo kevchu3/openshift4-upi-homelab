@@ -1,4 +1,5 @@
 auth/
+save/
 .openshift_install.log
 .openshift_install_state.json
 bootstrap.ign
