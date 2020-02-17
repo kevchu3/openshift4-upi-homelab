@@ -49,7 +49,7 @@ For this step, "Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using 
 
   * Run the helper script to create the manifests file: `create-manifests-config.sh`
   * Run the helper script to create the ignition config file: `./create-ignition-configs.sh`
-    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `cp *.ign /var/www/html/ignition/; restorecon -vR /var/www/html/`
+    * The Ignition config files should be placed in the web directory of the httpd server on the UPI helper node: `chmod 644 *.ign; cp *.ign /var/www/html/ignition/; restorecon -vR /var/www/html/`
     * Run `/usr/local/bin/helpernodecheck install-info` for more info.
 
 ### 6. Install RHCOS
