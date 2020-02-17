@@ -1,3 +1,4 @@
 #!/bin/bash
 
-./openshift-install create manifests --dir=.
+cp save/install-config.yaml .
+openshift-install create manifests --dir=.
