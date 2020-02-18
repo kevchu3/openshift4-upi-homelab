@@ -20,8 +20,11 @@ I followed instructions from this [Git repository] to build out a UPI helper nod
 I continued with a [bare metal installation], following the steps in the documentation:
   * Generating an SSH private key and adding it to the agent
   * Obtaining the installation program
+    * Place `openshift-install` binary in this Git repository's home directory
   * Installing the OpenShift Command-line Interface
   * Manually creating the installation configuration file
+    * To get started, an example has been placed in the save directory and can be used with the following command: `cp save/install-config-example.yaml save/install-config.yaml`
+    * Replace the contents of `save/install-config.yaml` with your custom configuration
 
 ### 3. Create virtual machines
 
