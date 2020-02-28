@@ -3,7 +3,7 @@ baseDomain: example2.com
 compute:
 - hyperthreading: Enabled
   name: worker
-  replicas: 3
+  replicas: 0
 controlPlane:
   hyperthreading: Enabled
   name: master
