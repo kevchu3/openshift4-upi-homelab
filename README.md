@@ -30,6 +30,7 @@ I continued with a [bare metal installation], following the steps in the documen
 
 For this step, "Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using an ISO image", I proceeded as follows.
   * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
+  * For disks, I used Preallocated for the masters and Thin Provisioning for the bootstrap and compute nodes.  The etcd database on masters is I/O intensive and thus Preallocated is recommended.
   * While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
     * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.0/rhcos-4.3.0-x86_64-installer.iso
     * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos-4.2.0-x86_64-installer.iso
