@@ -123,7 +123,7 @@ GPLv3
 ## Author
 Kevin Chung
 
-[Git repository]: https://github.com/christianh814/ocp4-upi-helpernode
+[Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
 [bare metal installation]: https://docs.openshift.com/container-platform/4.3/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
 [configure NFS storage using your helper node]: ./operator/image-registry/README.md
 [configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
