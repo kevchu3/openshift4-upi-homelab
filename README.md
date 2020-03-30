@@ -130,7 +130,7 @@ Kevin Chung
 
 [Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
 [bare metal installation]: https://docs.openshift.com/container-platform/4.3/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
-[configure NFS storage using your helper node]: ./operator/image-registry/README.md
+[configure NFS storage using your helper node]: ./operator/image-registry/
 [configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
 [configure ephemeral storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
-[Local storage operator]: ./operator/local-storage/README.md
+[Local storage operator]: ./operator/local-storage/
