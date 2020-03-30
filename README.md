@@ -117,6 +117,11 @@ To view the console and oauth URLs from your laptop outside of the cluster, add 
 <your-laptop-ip> oauth-openshift.apps.<your-cluster-domain>
 ```
 
+### 11. Optional: Configure additional operators
+
+Refer to these instructions to configure additional operators
+* [Local storage operator]
+
 ## License
 GPLv3
 
@@ -128,3 +133,4 @@ Kevin Chung
 [configure NFS storage using your helper node]: ./operator/image-registry/README.md
 [configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
 [configure ephemeral storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
+[Local storage operator]: ./operator/local-storage/README.md

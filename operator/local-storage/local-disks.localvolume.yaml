@@ -10,7 +10,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - worker1.ocp.cluster
+          - worker1.yourcluster.domain.com
   storageClassDevices:
     - storageClassName: local-storageclass
       volumeMode: Filesystem 
