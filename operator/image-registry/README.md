@@ -24,4 +24,14 @@ oc apply -f registry-volume.pv.yml
 
 Then, follow the remaining steps from the documentation to [configure NFS storage].
 
+### 3. Optional: Configure default route
+
+The following steps to [enable the image registry default route] were taken from the documentation.  In OpenShift Container Platform, the **Registry** Operator controls the registry feature. The Operator is defined by the `configs.imageregistry.operator.openshift.io` Custom Resource Definition (CRD).
+
+Patch the Image Registry Operator CRD:
+```
+oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
+```
+
 [configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
+[enable the image registry default route]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-operator.html#registry-operator-default-crd_configuring-registry-operator
