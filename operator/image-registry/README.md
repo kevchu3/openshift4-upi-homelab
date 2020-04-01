@@ -11,7 +11,7 @@ Set up registry mountpoint on the NFS host.  Update the reference to *.yourclust
 mkdir -p /exports/registry
 chmod -R 777 /exports/registry
 chown -R nfsnobody:nfsnobody /exports/registry
-echo "/exports/registry *.yourcluster.domain.com(rw,sync,no_wdelay,root_squash,insecure,fsid=0)" >> /etc/exports
+echo "/exports/registry *.yourcluster.domain.com(rw,sync,no_wdelay,root_squash,insecure)" >> /etc/exports
 exportfs -rv
 ```
 
