@@ -12,11 +12,10 @@ On the RHEL compute node, create a new device path.  For this example, we will u
 
 ### 3. Configure local storage
 
-Refer to the following for documentation to [configure local persistent storage].  This example provisions a StorageClass named `local-storageclass` using Filesystem storage on the `/dev/sdb1` device path.  Replace the node name `worker1.yourcluster.domain.com` with your own.  Create the LocalVolume object with the following:
+Refer to the following for documentation to [configure local persistent storage].  This example provisions the following StorageClass objects:
 
-```
-oc apply -f local-disks.localvolume.yaml
-```
+* StorageClass named `local-storageclass` using Filesystem storage on the `/dev/sdb1` device path.  Replace the node name `worker1.yourcluster.domain.com` with your own.  Create the LocalVolume object with the following: `oc apply -f local-volume.yaml`
+* StorageClass named `localblock-storageclass` using Block storage on the `/dev/sdb2` device path.  Replace the node name `worker1.yourcluster.domain.com` with your own.  Create the LocalVolume object with the following: `oc apply -f localblock-volume.yaml`
 
 [add a RHEL compute node]: https://docs.openshift.com/container-platform/4.3/machine_management/adding-rhel-compute.html
 [configure local persistent storage]: https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html
