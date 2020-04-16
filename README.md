@@ -122,6 +122,7 @@ To view the console and oauth URLs from your laptop outside of the cluster, add 
 Refer to these instructions to configure additional operators
 * [Local storage operator]
 * [Prometheus operator with persistent storage]
+* [Metering operator]
 
 ## License
 GPLv3
@@ -136,3 +137,4 @@ Kevin Chung
 [configure ephemeral storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
 [Local storage operator]: ./operator/local-storage/
 [Prometheus operator with persistent storage]: ./operator/metrics/
+[Metering operator]: ./operator/metering/
