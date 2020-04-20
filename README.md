@@ -124,6 +124,11 @@ Refer to these instructions to configure additional operators
 * [Prometheus operator with persistent storage]
 * [Metering operator]
 
+### 12. Optional: Configure chrony time service
+
+Refer to these instructions to configure chrony time service
+* [Chrony time service]
+
 ## License
 GPLv3
 
@@ -138,3 +143,4 @@ Kevin Chung
 [Local storage operator]: ./operator/local-storage/
 [Prometheus operator with persistent storage]: ./operator/metrics/
 [Metering operator]: ./operator/metering/
+[Chrony time service]: ./machineconfig/chrony/

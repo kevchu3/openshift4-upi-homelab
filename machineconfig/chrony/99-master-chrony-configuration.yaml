@@ -1,0 +1,25 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: master
+  name: 99-master-chrony-configuration
+spec:
+  config:
+    ignition:
+      config: {}
+      security:
+        tls: {}
+      timeouts: {}
+      version: 2.2.0
+    networkd: {}
+    passwd: {}
+    storage:
+      files:
+      - contents:
+          source: data:text/plain;charset=utf-8;base64,IyBVc2UgUmVkIEhhdCBOVFAgc2VydmVycwpzZXJ2ZXIgY2xvY2sucmVkaGF0LmNvbSBpYnVyc3QKCiMgUmVjb3JkIHRoZSByYXRlIGF0IHdoaWNoIHRoZSBzeXN0ZW0gY2xvY2sgZ2FpbnMvbG9zc2VzIHRpbWUuCmRyaWZ0ZmlsZSAvdmFyL2xpYi9jaHJvbnkvZHJpZnQKCiMgQWxsb3cgdGhlIHN5c3RlbSBjbG9jayB0byBiZSBzdGVwcGVkIGluIHRoZSBmaXJzdCB0aHJlZSB1cGRhdGVzCiMgaWYgaXRzIG9mZnNldCBpcyBsYXJnZXIgdGhhbiAxIHNlY29uZC4KbWFrZXN0ZXAgMS4wIDMKCiMgRW5hYmxlIGtlcm5lbCBzeW5jaHJvbml6YXRpb24gb2YgdGhlIHJlYWwtdGltZSBjbG9jayAoUlRDKS4KcnRjc3luYwoKIyBTcGVjaWZ5IGRpcmVjdG9yeSBmb3IgbG9nIGZpbGVzLgpsb2dkaXIgL3Zhci9sb2cvY2hyb255Cg==
+          verification: {}
+        filesystem: root
+        mode: 420
+        path: /etc/chrony.conf
+  osImageURL: ""
