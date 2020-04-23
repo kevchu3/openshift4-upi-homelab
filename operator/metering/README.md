@@ -8,15 +8,14 @@ This section provides steps to configure the metering operator to use NFS storag
 
 Set up a metering and a hive mountpoint on the NFS host.  Update the reference to *.yourcluster.domain.com to your own
 ```
-mkdir -p /exports/metering
-chmod -R 777 /exports/metering
-chown -R nfsnobody:nfsnobody /exports/metering
-echo "/exports/metering *.yourcluster.domain.com(rw,sync,no_wdelay,root_squash,insecure)" >> /etc/exports
+mkdir -p /exports/metering/metering-data
+chmod -R 777 /exports/metering/metering-data
+chown -R nfsnobody:nfsnobody /exports/metering/metering-data
 
-mkdir -p /exports/metering-hive
-chmod -R 777 /exports/metering-hive
-chown -R nfsnobody:nfsnobody /exports/metering-hive
-echo "/exports/metering-hive *.yourcluster.domain.com(rw,sync,no_wdelay,root_squash,insecure)" >> /etc/exports
+mkdir -p /exports/metering/hive-metastore
+chmod -R 777 /exports/metering/hive-metastore
+chown -R nfsnobody:nfsnobody /exports/metering/hive-metastore
+echo "/exports/metering *.yourcluster.domain.com(rw,sync,no_wdelay,root_squash,insecure)" >> /etc/exports
 exportfs -rv
 ```
 

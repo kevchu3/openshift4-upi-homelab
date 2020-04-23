@@ -8,6 +8,6 @@ spec:
   capacity:
     storage: 5Gi
   nfs:
-    path: /exports/metering-hive
+    path: /exports/metering/hive-metastore
     server: 1.2.3.4
   persistentVolumeReclaimPolicy: Retain

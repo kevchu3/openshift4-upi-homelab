@@ -8,6 +8,6 @@ spec:
   capacity:
     storage: 5Gi
   nfs:
-    path: /exports/metering
+    path: /exports/metering/metering-data
     server: 1.2.3.4
   persistentVolumeReclaimPolicy: Retain
