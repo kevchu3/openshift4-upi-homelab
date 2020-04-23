@@ -123,6 +123,7 @@ Refer to these instructions to configure additional operators
 * [Local storage operator]
 * [Prometheus operator with persistent storage]
 * [Metering operator]
+* [3scale operator]
 
 ### 12. Optional: Configure chrony time service
 
@@ -143,4 +144,5 @@ Kevin Chung
 [Local storage operator]: ./operator/local-storage/
 [Prometheus operator with persistent storage]: ./operator/metrics/
 [Metering operator]: ./operator/metering/
+[3scale operator]: ./operator/3scale/
 [Chrony time service]: ./machineconfig/chrony/
