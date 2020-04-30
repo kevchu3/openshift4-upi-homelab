@@ -42,7 +42,20 @@ Refer to these instructions to configure additional operators
 * [Metering operator]
 * [3scale operator]
 
-### 3. Configure chrony time service
+### 3. Configure image pruning
+
+*Prerequisites: OpenShift 4.4+*
+
+By default, image pruning is not configured and the dashboard shows the following warning:
+
+> Automatic image pruning is not enabled. Regular pruning of images no longer referenced by ImageStreams is strongly recommended to ensure your cluster remains healthy. To remove this warning, install the image pruner by creating an imagepruner.imageregistry.operator.openshift.io resource with the name `cluster`. Ensure that the `suspend` field is set to `false`.
+
+To configure the image pruner, run the following command:
+```
+oc patch imagepruner.imageregistry.operator.openshift.io/cluster --type merge --patch '{"spec":{"suspend":false}}'
+```
+
+### 4. Configure chrony time service
 
 Refer to these instructions to configure chrony time service
 * [Chrony time service]
