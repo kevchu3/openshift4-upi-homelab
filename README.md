@@ -90,45 +90,7 @@ To verify installation, I ran this helper script: `./complete-install.sh`
 
 ## Post Installation
 
-### 9. Configure image registry
-
-In OpenShift 4.3, the image registry operator will start in a Removed state with the following note: "Image Registry has been removed. ImageStreamTags, BuildConfigs and DeploymentConfigs which reference ImageStreamTags may not work as expected. Please configure storage and update the config to Managed state by editing configs.imageregistry.operator.openshift.io."
-
-Two quick options to configure the Image Registry operator are provided below to get started.  Please note that these are not recommended for production use.
-
-#### 9a. Configure NFS storage
-
-  Refer to these instructions to [configure NFS storage using your helper node].  Refer to the following for additional documentation to [configure NFS storage].
-
-#### 9b. Configure ephemeral storage
-
-  To configure ephemeral storage instead, you can run the following:
-  ```
-  oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"storage":{"emptyDir":{}}}}'
-  ```
-
-  Refer to the following for additional documentation to [configure ephemeral storage].
-
-### 10. Optional: Configure your laptop
-
-To view the console and oauth URLs from your laptop outside of the cluster, add the following entries to your laptop's `/etc/hosts`:
-```
-<your-laptop-ip> console-openshift-console.apps.<your-cluster-domain>
-<your-laptop-ip> oauth-openshift.apps.<your-cluster-domain>
-```
-
-### 11. Optional: Configure additional operators
-
-Refer to these instructions to configure additional operators
-* [Local storage operator]
-* [Prometheus operator with persistent storage]
-* [Metering operator]
-* [3scale operator]
-
-### 12. Optional: Configure chrony time service
-
-Refer to these instructions to configure chrony time service
-* [Chrony time service]
+Refer to this documentation for [post installation procedures (day 2)].
 
 ## License
 GPLv3
@@ -138,11 +100,4 @@ Kevin Chung
 
 [Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
 [bare metal installation]: https://docs.openshift.com/container-platform/4.3/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
-[configure NFS storage using your helper node]: ./operator/image-registry/
-[configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
-[configure ephemeral storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
-[Local storage operator]: ./operator/local-storage/
-[Prometheus operator with persistent storage]: ./operator/metrics/
-[Metering operator]: ./operator/metering/
-[3scale operator]: ./operator/3scale/
-[Chrony time service]: ./machineconfig/chrony/
+[post installation procedures (day 2)]: day-two.md
