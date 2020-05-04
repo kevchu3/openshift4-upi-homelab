@@ -16,7 +16,7 @@ By following the [initial lab installation], your OpenShift cluster is complete.
 
 ### 1. Configure image registry
 
-In OpenShift 4.3, the image registry operator will start in a Removed state with the following note: "Image Registry has been removed. ImageStreamTags, BuildConfigs and DeploymentConfigs which reference ImageStreamTags may not work as expected. Please configure storage and update the config to Managed state by editing configs.imageregistry.operator.openshift.io."
+The image registry operator will start in a Removed state with the following note: "Image Registry has been removed. ImageStreamTags, BuildConfigs and DeploymentConfigs which reference ImageStreamTags may not work as expected. Please configure storage and update the config to Managed state by editing configs.imageregistry.operator.openshift.io."
 
 Two quick options to configure the Image Registry operator are provided below to get started.  Please note that these are not recommended for production use.
 
@@ -46,6 +46,7 @@ Refer to these instructions to configure additional operators
 
 *Prerequisites: OpenShift 4.4+*
 
+Refer to the documentation for more information on [automatically pruning images].
 By default, image pruning is not configured and the dashboard shows the following warning:
 
 > Automatic image pruning is not enabled. Regular pruning of images no longer referenced by ImageStreams is strongly recommended to ensure your cluster remains healthy. To remove this warning, install the image pruner by creating an imagepruner.imageregistry.operator.openshift.io resource with the name `cluster`. Ensure that the `suspend` field is set to `false`.
@@ -68,10 +69,11 @@ Kevin Chung
 
 [initial lab installation]: README.md
 [configure NFS storage using your helper node]: ./operator/image-registry/
-[configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
-[configure ephemeral storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
+[configure NFS storage]: https://docs.openshift.com/container-platform/latest/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
+[configure ephemeral storage]: https://docs.openshift.com/container-platform/latest/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
 [Local storage operator]: ./operator/local-storage/
 [Prometheus operator with persistent storage]: ./operator/metrics/
 [Metering operator]: ./operator/metering/
 [3scale operator]: ./operator/3scale/
+[automatically pruning images]: https://docs.openshift.com/container-platform/latest/applications/pruning-objects.html#pruning-images_pruning-objects
 [Chrony time service]: ./machineconfig/chrony/

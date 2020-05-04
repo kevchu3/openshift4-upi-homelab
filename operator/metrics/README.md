@@ -13,6 +13,6 @@ Finally, I updated the cluster-monitoring-config ConfigMap with: `oc apply -f cl
 I verified the PersistentVolumeClaims were created and bound with: `oc get pvc -n openshift-monitoring`
 I also verified the prometheus-k8s pods spun up properly in the project with: `oc get pods -o wide -n openshift-monitoring`
 
-[additional configuration options]: https://docs.openshift.com/container-platform/4.3/monitoring/cluster_monitoring/configuring-the-monitoring-stack.html
-[implement persistence]: https://docs.openshift.com/container-platform/4.3/monitoring/cluster_monitoring/configuring-the-monitoring-stack.html#configuring-persistent-storage
+[additional configuration options]: https://docs.openshift.com/container-platform/latest/monitoring/cluster_monitoring/configuring-the-monitoring-stack.html
+[implement persistence]: https://docs.openshift.com/container-platform/latest/monitoring/cluster_monitoring/configuring-the-monitoring-stack.html#configuring-persistent-storage
 [local storage operator]: ../local-storage

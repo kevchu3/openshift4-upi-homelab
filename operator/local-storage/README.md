@@ -17,5 +17,5 @@ Refer to the following for documentation to [configure local persistent storage]
 * StorageClass named `local-storageclass` using Filesystem storage on the `/dev/sdb1` device path.  Replace the node name `worker1.yourcluster.domain.com` with your own.  Create the LocalVolume object with the following: `oc apply -f local-volume.yaml`
 * StorageClass named `localblock-storageclass` using Block storage on the `/dev/sdb2` device path.  Replace the node name `worker1.yourcluster.domain.com` with your own.  Create the LocalVolume object with the following: `oc apply -f localblock-volume.yaml`
 
-[add a RHEL compute node]: https://docs.openshift.com/container-platform/4.3/machine_management/adding-rhel-compute.html
-[configure local persistent storage]: https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html
+[add a RHEL compute node]: https://docs.openshift.com/container-platform/latest/machine_management/adding-rhel-compute.html
+[configure local persistent storage]: https://docs.openshift.com/container-platform/latest/storage/persistent_storage/persistent-storage-local.html

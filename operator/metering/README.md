@@ -41,6 +41,6 @@ Deploy the example metering report with `oc apply -f cluster-cpu-capacity-hourly
 Following the remaining documentation to [view your report data]
 
 
-[install the metering operator]: https://docs.openshift.com/container-platform/4.3/metering/metering-installing-metering.html
-[configure metering with storage]: https://docs.openshift.com/container-platform/4.3/metering/configuring_metering/metering-configure-persistent-storage.html#metering-store-data-in-shared-volumes_metering-configure-persistent-storage
-[view your report data]: https://docs.openshift.com/container-platform/4.3/metering/metering-using-metering.html#metering-viewing-report-results_using-metering
+[install the metering operator]: https://docs.openshift.com/container-platform/latest/metering/metering-installing-metering.html
+[configure metering with storage]: https://docs.openshift.com/container-platform/latest/metering/configuring_metering/metering-configure-persistent-storage.html#metering-store-data-in-shared-volumes_metering-configure-persistent-storage
+[view your report data]: https://docs.openshift.com/container-platform/latest/metering/metering-using-metering.html#metering-viewing-report-results_using-metering

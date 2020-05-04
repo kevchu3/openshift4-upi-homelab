@@ -1,7 +1,6 @@
 # OpenShift 4 UPI Home Lab Installation
 
-I followed these steps to build out my OpenShift 4.3 UPI home lab using Red Hat Enterprise Virtualization (RHEV) virtual machines.  Official documentation on a bare-metal installation is provided [here](
-https://cloud.redhat.com/openshift/install/metal/user-provisioned).
+I followed these steps to build out my OpenShift 4 UPI home lab using Red Hat Enterprise Virtualization (RHEV) virtual machines.  Refer to the official documentation for a [bare metal installation]
 
 ## Architecture
 * 1 helper node (RHEL7, 4 vCPU, 4 GB RAM, 30 GB disk)
@@ -17,7 +16,7 @@ I followed instructions from this [Git repository] to build out a UPI helper nod
 
 ### 2. Bare metal installation
 
-I continued with a [bare metal installation], following the steps in the documentation:
+I continued with the bare metal installation, following the steps in the [documentation]
   * Generating an SSH private key and adding it to the agent
   * Obtaining the installation program
     * Place `openshift-install` binary in this Git repository's home directory
@@ -32,9 +31,9 @@ For this step, "Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using 
   * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
   * For disks, I used Preallocated for the masters and Thin Provisioning for the bootstrap and compute nodes.  The etcd database on masters is I/O intensive and thus Preallocated is recommended.
   * While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
-    * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.0/rhcos-4.3.0-x86_64-installer.iso
-    * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos-4.2.0-x86_64-installer.iso
-    * OpenShift 4.1 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.1/4.1.0/rhcos-4.1.0-x86_64-installer.iso
+    * OpenShift 4.4 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.4/4.4.3/rhcos-4.4.3-x86_64-installer.x86_64.iso
+    * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.8/rhcos-4.3.8-x86_64-installer.x86_64.iso
+    * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.18/rhcos-4.2.18-x86_64-installer.iso
 
 ### 4. Configure DHCP
 
@@ -71,9 +70,9 @@ I started all of the VMs to install RHCOS.  On the "Install CoreOS" screen, I pr
    ```
 
    The BIOS file was created by the helper node playbook and is a local clone of the upstream mirror:
-   * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.0/rhcos-4.3.0-x86_64-metal.raw.gz
-   * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.0/rhcos-4.2.0-x86_64-metal-bios.raw.gz
-   * OpenShift 4.1 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.1/4.1.0/rhcos-4.1.0-x86_64-metal-bios.raw.gz
+   * OpenShift 4.4 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.4/4.4.3/rhcos-4.4.3-x86_64-metal.x86_64.raw.gz
+   * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.8/rhcos-4.3.8-x86_64-metal.x86_64.raw.gz
+   * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.18/rhcos-4.2.18-x86_64-metal-bios.raw.gz
 
    The CoreOS wrote to disk and requested a reboot, and I reconfigured RHEV to now boot from hard drive.  Upon reboot of each node, they consumed their respective Ignition files.
 
@@ -98,6 +97,7 @@ GPLv3
 ## Author
 Kevin Chung
 
+[bare metal installation]: https://cloud.redhat.com/openshift/install/metal/user-provisioned
 [Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
-[bare metal installation]: https://docs.openshift.com/container-platform/4.3/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
+[documentation]: https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
 [post installation procedures (day 2)]: day-two.md

@@ -12,5 +12,5 @@ oc apply -f 99-master-chrony-configuration.yaml
 oc apply -f 99-worker-chrony-configuration.yaml
 ```
 
-[configuring chrony time service]: https://docs.openshift.com/container-platform/4.3/installing/install_config/installing-customizing.html#installation-special-config-crony_installing-customizing
+[configuring chrony time service]: https://docs.openshift.com/container-platform/latest/installing/install_config/installing-customizing.html#installation-special-config-crony_installing-customizing
 [example-chrony.conf]: ./example-chrony.conf

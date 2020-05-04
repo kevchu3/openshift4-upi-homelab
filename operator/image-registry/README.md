@@ -33,5 +33,5 @@ Patch the Image Registry Operator CRD:
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
 ```
 
-[configure NFS storage]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
-[enable the image registry default route]: https://docs.openshift.com/container-platform/4.3/registry/configuring-registry-operator.html#registry-operator-default-crd_configuring-registry-operator
+[configure NFS storage]: https://docs.openshift.com/container-platform/latest/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html#registry-configuring-storage-baremetal_configuring-registry-storage-baremetal
+[enable the image registry default route]: https://docs.openshift.com/container-platform/latest/registry/configuring-registry-operator.html#registry-operator-default-crd_configuring-registry-operator
