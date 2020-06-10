@@ -91,6 +91,10 @@ To verify installation, I ran this helper script: `./complete-install.sh`
 
 Refer to this documentation for [post installation procedures (day 2)].
 
+## [Restricted Network] - Update Cluster with Mirror Repository
+
+Refer to this documentation for [updating a cluster in a restricted network].
+
 ## License
 GPLv3
 
@@ -101,3 +105,4 @@ Kevin Chung
 [Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
 [documentation]: https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
 [post installation procedures (day 2)]: day-two.md
+[updating a cluster in a restricted network]: update-restricted.md
