@@ -36,10 +36,10 @@ I continued with the bare metal installation, following the steps in the [docume
 ### 3. Create virtual machines
 
 #### 3a. **[Restricted Network]** - Set up restricted network
-    * Set up networking on hypervisor - For a restricted network cluster, you will need to configure a separate network, vNIC profile, and VLAN tag on your hypervisor.  This configuration is beyond the scope of this repository.
-    * Configure the bastion, bootstrap, masters, and compute nodes to use the network interface for the restricted network configured above.  You can use a `192.168.x.0/24` subnet for this.
-    * Follow the official documentation to [install a mirror repository] or refer to this repository to [install Sonatype Nexus as a mirror Docker repository].
-    * Configure your mirror repository with two network interface, one for the restricted network and one with access to [Red Hat's public sites].
+  * Set up networking on hypervisor - For a restricted network cluster, you will need to configure a separate network, vNIC profile, and VLAN tag on your hypervisor.  This configuration is beyond the scope of this repository.
+  * Configure the bastion, bootstrap, masters, and compute nodes to use the network interface for the restricted network configured above.  You can use a `192.168.x.0/24` subnet for this.
+  * Follow the official documentation to [install a mirror repository] or refer to this repository to [install Sonatype Nexus as a mirror Docker repository].
+  * Configure your mirror repository with two network interface, one for the restricted network and one with access to [Red Hat's public sites].
 
 #### 3b. Continue creating virtual machines
 
@@ -110,7 +110,7 @@ Refer to this documentation for [post installation procedures (day 2)].
 
 ## **[Restricted Network]** - Update Minor Version in Cluster with Mirror Repository
 
-Refer to this documentation for [updating the minor version in a cluster in a restricted network].
+Refer to this documentation for [updating the minor version in a restricted network].
 
 ## License
 GPLv3
@@ -125,4 +125,4 @@ Kevin Chung
 [install a mirror repository]: https://docs.openshift.com/container-platform/4.4/installing/install_config/installing-restricted-networks-preparations.html#installation-creating-mirror-registry_installing-restricted-networks-preparations
 [install Sonatype Nexus as a mirror repository]: https://github.com/kevchu3/nexus-docker-repo 
 [post installation procedures (day 2)]: day-two.md
-[updating the minor version in a cluster in a restricted network]]: update-restricted.md
+[updating the minor version in a restricted network]: update-restricted.md
