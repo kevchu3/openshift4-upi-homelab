@@ -1,6 +1,8 @@
 # OpenShift 4 UPI Home Lab Installation
 
-I followed these steps to build out my OpenShift 4 UPI home lab using Red Hat Enterprise Virtualization (RHEV) virtual machines.  Refer to the official documentation for a [bare metal installation]
+I followed these steps to build out my OpenShift 4 UPI home lab using Red Hat Enterprise Virtualization (RHEV) virtual machines.  Refer to the official documentation for a [bare metal installation].
+
+For a restricted network setup using a mirror Docker repository, follow the additional steps denoted by **[Restricted Network]**.
 
 ## Architecture
 * 1 helper node (RHEL7, 4 vCPU, 4 GB RAM, 30 GB disk)
@@ -14,6 +16,11 @@ I followed these steps to build out my OpenShift 4 UPI home lab using Red Hat En
 
 I followed instructions from this [Git repository] to build out a UPI helper node.  This allowed me to satisfy load balancing, DHCP, PXE, DNS, and HTTPD requirements.  I ran `nmcli device show` from the helper node to populate the DHCP section of vars.yaml since the helper node will function as DNS/DHCP for the cluster.  At this time, don't run the helper node configuration playbook yet.
 
+**[Restricted Network]** - Add mirror repository to DNS
+
+Add the mirror repository to the DNS entries on your authoritative helper node.  Using the above UPI helper node Git repository, I added DNS entries to the following files: `/var/named/zonefile.db` and `/var/named/reverse.db`
+
+
 ### 2. Bare metal installation
 
 I continued with the bare metal installation, following the steps in the [documentation]
@@ -23,11 +30,21 @@ I continued with the bare metal installation, following the steps in the [docume
   * Installing the OpenShift Command-line Interface
   * Manually creating the installation configuration file
     * To get started, an example has been placed in the save directory and can be used with the following command: `cp save/install-config-example.yaml save/install-config.yaml`
+    * **[Restricted Network]** Use this example instead of the above: `cp save/install-config-restricted-example.yaml save/install-config.yaml`
     * Replace the contents of `save/install-config.yaml` with your custom configuration
 
 ### 3. Create virtual machines
 
+#### 3a. **[Restricted Network]** - Set up restricted network
+    * Set up networking on hypervisor - For a restricted network cluster, you will need to configure a separate network, vNIC profile, and VLAN tag on your hypervisor.  This configuration is beyond the scope of this repository.
+    * Configure the bastion, bootstrap, masters, and compute nodes to use the network interface for the restricted network configured above.  You can use a `192.168.x.0/24` subnet for this.
+    * Follow the official documentation to [install a mirror repository] or refer to this repository to [install Sonatype Nexus as a mirror Docker repository].
+    * Configure your mirror repository with two network interface, one for the restricted network and one with access to [Red Hat's public sites].
+
+#### 3b. Continue creating virtual machines
+
 For this step, "Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using an ISO image", I proceeded as follows.
+
   * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
   * For disks, I used Preallocated for the masters and Thin Provisioning for the bootstrap and compute nodes.  The etcd database on masters is I/O intensive and thus Preallocated is recommended.
   * While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
@@ -91,9 +108,9 @@ To verify installation, I ran this helper script: `./complete-install.sh`
 
 Refer to this documentation for [post installation procedures (day 2)].
 
-## [Restricted Network] - Update Cluster with Mirror Repository
+## **[Restricted Network]** - Update Minor Version in Cluster with Mirror Repository
 
-Refer to this documentation for [updating a cluster in a restricted network].
+Refer to this documentation for [updating the minor version in a cluster in a restricted network].
 
 ## License
 GPLv3
@@ -104,5 +121,8 @@ Kevin Chung
 [bare metal installation]: https://cloud.redhat.com/openshift/install/metal/user-provisioned
 [Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
 [documentation]: https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
+[Red Hat's public sites]: https://docs.openshift.com/container-platform/latest/installing/install_config/configuring-firewall.html
+[install a mirror repository]: https://docs.openshift.com/container-platform/4.4/installing/install_config/installing-restricted-networks-preparations.html#installation-creating-mirror-registry_installing-restricted-networks-preparations
+[install Sonatype Nexus as a mirror repository]: https://github.com/kevchu3/nexus-docker-repo 
 [post installation procedures (day 2)]: day-two.md
-[updating a cluster in a restricted network]: update-restricted.md
+[updating the minor version in a cluster in a restricted network]]: update-restricted.md
