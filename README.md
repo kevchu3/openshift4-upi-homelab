@@ -1,5 +1,8 @@
 # OpenShift 4 UPI Home Lab Installation
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/kevchu3/openshift4-upi-homelab?color=red&style=plastic)
+![GitHub](https://img.shields.io/github/license/kevchu3/openshift4-upi-homelab?color=red&style=plastic)
+
 I followed these steps to build out my OpenShift 4 UPI home lab using Red Hat Enterprise Virtualization (RHEV) virtual machines.  Refer to the official documentation for a [bare metal installation].
 
 For a restricted network setup using a mirror Docker repository, follow the additional steps denoted by **[Restricted Network]**.
