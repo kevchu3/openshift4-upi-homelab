@@ -1,7 +1,7 @@
 # OpenShift 4 UPI Home Lab Installation
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/kevchu3/openshift4-upi-homelab?color=red&style=plastic)
-![GitHub](https://img.shields.io/github/license/kevchu3/openshift4-upi-homelab?color=red&style=plastic)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/kevchu3/openshift4-upi-homelab?color=blue&style=plastic)
+![GitHub](https://img.shields.io/github/license/kevchu3/openshift4-upi-homelab?color=blue&style=plastic)
 
 I followed these steps to build out my OpenShift 4 UPI home lab using Red Hat Enterprise Virtualization (RHEV) virtual machines.  Refer to the official documentation for a [bare metal installation].
 
@@ -51,9 +51,9 @@ For this step, "Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using 
   * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
   * For disks, I used Preallocated for the masters and Thin Provisioning for the bootstrap and compute nodes.  The etcd database on masters is I/O intensive and thus Preallocated is recommended.
   * While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
+    * OpenShift 4.5 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.5/4.5.2/rhcos-4.5.2-x86_64-installer.x86_64.iso
     * OpenShift 4.4 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.4/4.4.3/rhcos-4.4.3-x86_64-installer.x86_64.iso
     * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.8/rhcos-4.3.8-x86_64-installer.x86_64.iso
-    * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.18/rhcos-4.2.18-x86_64-installer.iso
 
 ### 4. Configure DHCP
 
@@ -90,9 +90,9 @@ I started all of the VMs to install RHCOS.  On the "Install CoreOS" screen, I pr
    ```
 
    The BIOS file was created by the helper node playbook and is a local clone of the upstream mirror:
+   * OpenShift 4.5 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.5/4.5.2/rhcos-4.5.2-x86_64-metal.x86_64.raw.gz
    * OpenShift 4.4 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.4/4.4.3/rhcos-4.4.3-x86_64-metal.x86_64.raw.gz
    * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.8/rhcos-4.3.8-x86_64-metal.x86_64.raw.gz
-   * OpenShift 4.2 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/4.2.18/rhcos-4.2.18-x86_64-metal-bios.raw.gz
 
    The CoreOS wrote to disk and requested a reboot, and I reconfigured RHEV to now boot from hard drive.  Upon reboot of each node, they consumed their respective Ignition files.
 
@@ -125,7 +125,7 @@ Kevin Chung
 [Git repository]: https://github.com/RedHatOfficial/ocp4-helpernode
 [documentation]: https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#ssh-agent-using_installing-bare-metal
 [Red Hat's public sites]: https://docs.openshift.com/container-platform/latest/installing/install_config/configuring-firewall.html
-[install a mirror repository]: https://docs.openshift.com/container-platform/4.4/installing/install_config/installing-restricted-networks-preparations.html#installation-creating-mirror-registry_installing-restricted-networks-preparations
+[install a mirror repository]: https://docs.openshift.com/container-platform/latest/installing/install_config/installing-restricted-networks-preparations.html#installation-creating-mirror-registry_installing-restricted-networks-preparations
 [install Sonatype Nexus as a mirror repository]: https://github.com/kevchu3/nexus-docker-repo 
 [post installation procedures (day 2)]: day-two.md
 [updating the minor version in a restricted network]: update-restricted.md
