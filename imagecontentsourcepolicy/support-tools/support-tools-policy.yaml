@@ -1,0 +1,12 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: support-tools-policy
+spec:
+  repositoryDigestMirrors:
+  - mirrors:
+    - <local-registry>:<local-port>/rhel7/support-tools
+    source: registry.redhat.io/rhel7/support-tools
+  - mirrors:
+    - <local-registry>:<local-port>/openshift/origin-must-gather
+    source: quay.io/openshift/origin-must-gather

@@ -61,6 +61,12 @@ oc patch imagepruner.imageregistry.operator.openshift.io/cluster --type merge --
 Refer to these instructions to configure chrony time service
 * [Chrony time service]
 
+### 5. [Restricted Network] - Configure support tools
+
+Refer to these instructions to configure support tools for a restricted network
+* [Support tools]
+
+
 ## License
 GPLv3
 
@@ -77,3 +83,4 @@ Kevin Chung
 [3scale operator]: ./operator/3scale/
 [automatically pruning images]: https://docs.openshift.com/container-platform/latest/applications/pruning-objects.html#pruning-images_pruning-objects
 [Chrony time service]: ./machineconfig/chrony/
+[Support tools]: ./imagecontentsourcepolicy/support-tools/
