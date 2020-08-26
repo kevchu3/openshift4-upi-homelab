@@ -61,7 +61,17 @@ oc patch imagepruner.imageregistry.operator.openshift.io/cluster --type merge --
 Refer to these instructions to configure chrony time service
 * [Chrony time service]
 
-### 5. [Restricted Network] - Configure support tools
+### 5. Configure multitenant network policy
+
+Using Network Policy, by default, all Pods in a project are accessible from other Pods and network endpoints.  Refer to the documentation for information on [configuring multitenant network policy].  Refer to the documentation for steps to [configure this policy for new projects by default].
+
+An [example project template for multitenant network policy] is provided and can be installed with:
+```
+oc create -f template/multitenant-project-template.yaml -n openshift-config
+oc patch project.config.openshift.io/cluster --type merge -p '{"spec":{"projectRequestTemplate":{"name":"multitenant-project-template"}}}'
+```
+
+### 6. [Restricted Network] - Configure support tools
 
 Refer to these instructions to configure support tools for a restricted network
 * [Support tools]
@@ -83,4 +93,7 @@ Kevin Chung
 [3scale operator]: ./operator/3scale/
 [automatically pruning images]: https://docs.openshift.com/container-platform/latest/applications/pruning-objects.html#pruning-images_pruning-objects
 [Chrony time service]: ./machineconfig/chrony/
+[configuring multitenant network policy]: https://docs.openshift.com/container-platform/latest/networking/network_policy/multitenant-network-policy.html
+[configure this policy for new projects by default]: https://docs.openshift.com/container-platform/latest/networking/network_policy/default-network-policy.html
+[example project template for multitenant network policy]: ./template/multitenant-project-template.yaml
 [Support tools]: ./imagecontentsourcepolicy/support-tools/
