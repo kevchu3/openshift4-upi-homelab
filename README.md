@@ -51,9 +51,9 @@ For this step, "Creating Red Hat Enterprise Linux CoreOS (RHCOS) machines using 
   * In RHEV, I created the VMs for the bootstrap, control plane, and compute nodes.
   * For disks, I used Preallocated for the masters and Thin Provisioning for the bootstrap and compute nodes.  The etcd database on masters is I/O intensive and thus Preallocated is recommended.
   * While creating the VMs booted from CD-ROM using a downloaded version of this ISO locally hosted in RHEV:
+    * OpenShift 4.6 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.6/4.6.1/rhcos-4.6.1-x86_64-live.x86_64.iso
     * OpenShift 4.5 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.5/4.5.2/rhcos-4.5.2-x86_64-installer.x86_64.iso
     * OpenShift 4.4 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.4/4.4.3/rhcos-4.4.3-x86_64-installer.x86_64.iso
-    * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.8/rhcos-4.3.8-x86_64-installer.x86_64.iso
 
 ### 4. Configure DHCP
 
@@ -90,9 +90,9 @@ I started all of the VMs to install RHCOS.  On the "Install CoreOS" screen, I pr
    ```
 
    The BIOS file was created by the helper node playbook and is a local clone of the upstream mirror:
+   * OpenShift 4.6 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.6/4.6.1/rhcos-4.6.1-x86_64-metal.x86_64.raw.gz
    * OpenShift 4.5 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.5/4.5.2/rhcos-4.5.2-x86_64-metal.x86_64.raw.gz
    * OpenShift 4.4 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.4/4.4.3/rhcos-4.4.3-x86_64-metal.x86_64.raw.gz
-   * OpenShift 4.3 - https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.3/4.3.8/rhcos-4.3.8-x86_64-metal.x86_64.raw.gz
 
    The CoreOS wrote to disk and requested a reboot, and I reconfigured RHEV to now boot from hard drive.  Upon reboot of each node, they consumed their respective Ignition files.
 
