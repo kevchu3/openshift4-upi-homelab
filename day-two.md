@@ -66,15 +66,25 @@ Refer to these instructions to configure chrony time service
 Refer to these instructions to configure kubelet logging verbosity
 * [Kubelet logging verbosity]
 
-### 6. Configure multitenant network policy
+### 6. Configure project template
+
+Refer to the documentation on how to configure a [project template].
+
+#### a. Multitenant network policy
 
 Using Network Policy, by default, all Pods in a project are accessible from other Pods and network endpoints.  Refer to the documentation for information on [configuring multitenant network policy].  Refer to the documentation for steps to [configure this policy for new projects by default].
 
-An [example project template for multitenant network policy] is provided and can be installed with:
+An example with [multitenant network policy] is provided and can be installed with:
 ```
-oc create -f template/multitenant-project-template.yaml -n openshift-config
+oc create -f template/multitenant-network-policy.yaml -n openshift-config
 oc patch project.config.openshift.io/cluster --type merge -p '{"spec":{"projectRequestTemplate":{"name":"multitenant-project-template"}}}'
 ```
+
+#### b. Resource quotas and limit ranges
+
+Refer to the documentation on how to configure [resource quotas] and [limit ranges].
+
+An example of an [all-in-one project template] with NetworkPolicy, ResourceQuotas, and LimitRanges is provided.
 
 ### 7. [Restricted Network] - Configure support tools
 
@@ -99,7 +109,11 @@ Kevin Chung
 [automatically pruning images]: https://docs.openshift.com/container-platform/latest/applications/pruning-objects.html#pruning-images_pruning-objects
 [Chrony time service]: ./machineconfig/chrony/
 [Kubelet logging verbosity]: ./machineconfig/kubelet/
+[project template]: https://docs.openshift.com/container-platform/latest/applications/projects/configuring-project-creation.html
 [configuring multitenant network policy]: https://docs.openshift.com/container-platform/latest/networking/network_policy/multitenant-network-policy.html
 [configure this policy for new projects by default]: https://docs.openshift.com/container-platform/latest/networking/network_policy/default-network-policy.html
-[example project template for multitenant network policy]: ./template/multitenant-project-template.yaml
+[multitenant network policy]: ./template/multitenant-network-policy.yaml
+[resource quotas]: https://docs.openshift.com/container-platform/latest/applications/quotas/quotas-setting-per-project.html
+[limit ranges]: https://docs.openshift.com/container-platform/latest/nodes/clusters/nodes-cluster-limit-ranges.html
+[all-in-one project template]: ./template/multitenant-project-template.yaml
 [Support tools]: ./imagecontentsourcepolicy/support-tools/
