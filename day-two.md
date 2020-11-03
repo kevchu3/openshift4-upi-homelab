@@ -39,7 +39,6 @@ Two quick options to configure the Image Registry operator are provided below to
 Refer to these instructions to configure additional operators
 * [Local storage operator]
 * [Prometheus operator with persistent storage]
-* [Metering operator]
 * [3scale operator]
 
 ### 3. Configure image pruning
@@ -104,7 +103,6 @@ Kevin Chung
 [configure ephemeral storage]: https://docs.openshift.com/container-platform/latest/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html#installation-registry-storage-non-production_configuring-registry-storage-baremetal
 [Local storage operator]: ./operator/local-storage/
 [Prometheus operator with persistent storage]: ./operator/metrics/
-[Metering operator]: ./operator/metering/
 [3scale operator]: ./operator/3scale/
 [automatically pruning images]: https://docs.openshift.com/container-platform/latest/applications/pruning-objects.html#pruning-images_pruning-objects
 [Chrony time service]: ./machineconfig/chrony/

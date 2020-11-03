@@ -1,8 +1,0 @@
-apiVersion: metering.openshift.io/v1
-kind: Report
-metadata:
-  name: cluster-cpu-capacity-hourly
-spec:
-  query: "cluster-cpu-capacity"
-  schedule:
-    period: "hourly"
