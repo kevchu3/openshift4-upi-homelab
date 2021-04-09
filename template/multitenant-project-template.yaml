@@ -30,7 +30,7 @@ objects:
     kind: User
     name: ${PROJECT_ADMIN_USER}
 # Set multitenant network policy
-# https://docs.openshift.com/container-platform/4.6/networking/network_policy/default-network-policy.html
+# https://docs.openshift.com/container-platform/latest/networking/network_policy/default-network-policy.html
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
@@ -67,16 +67,16 @@ objects:
     policyTypes:
     - Ingress
 # Set resource quotas per project
-# https://docs.openshift.com/container-platform/4.6/applications/quotas/quotas-setting-per-project.html
-- apiVersion: v1
-  kind: ResourceQuota
-  metadata:
-    name: compute
-  spec:
-    hard:
-      requests.cpu: "4"
-      requests.memory: 24Gi
-      limits.memory: 24Gi
+# https://docs.openshift.com/container-platform/latest/applications/quotas/quotas-setting-per-project.html
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute
+spec:
+  hard:
+    requests.cpu: 4
+    requests.memory: 24Gi
+    limits.memory: 24Gi
 # Set limit range so that pods fit within quota
 # https://docs.openshift.com/container-platform/latest/nodes/clusters/nodes-cluster-limit-ranges.html
 - apiVersion: v1

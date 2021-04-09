@@ -30,7 +30,7 @@ objects:
     kind: User
     name: ${PROJECT_ADMIN_USER}
 # Set multitenant network policy
-# https://docs.openshift.com/container-platform/4.6/networking/network_policy/default-network-policy.html
+# https://docs.openshift.com/container-platform/latest/networking/network_policy/default-network-policy.html
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
